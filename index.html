@@ -10,31 +10,41 @@
             text-align: center;
             background: url('https://thedailyguardian.com/wp-content/uploads/2024/01/casino.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #fff;
+            color: #ddd; /* Text color */
             margin: 0;
             padding: 0;
         }
         h1 {
             background-color: rgba(192, 57, 43, 0.8);
-            color: #fff;
+            color: #ddd; /* Text color */
             padding: 20px;
             margin: 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
         h1 img {
             width: 100px; /* Adjust the size as needed */
             height: auto;
             margin-bottom: 10px;
         }
+        .facebook-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: auto;
+        }
         table {
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8); /* Darker background color */
+            opacity: 0.9; /* Adjust opacity for transparency */
+            color: #ddd; /* Text color */
         }
         th, td {
             border: 1px solid #ddd;
@@ -42,7 +52,7 @@
         }
         th {
             background-color: rgba(231, 76, 60, 0.9);
-            color: white;
+            color: #ddd; /* Text color */
             font-size: 1.2em;
         }
         tr:nth-child(even) {
@@ -54,6 +64,13 @@
         tr:hover {
             background-color: rgba(68, 68, 68, 0.9);
         }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            color: #f00; /* Red color */
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +78,9 @@
     <h1>
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXH6laMbs-t57q8u8N6VBmfTLCCdKme8MZogaMcTEFl0mHJ3AfOne7dstvnOkDUHObKMEMhL28VlOi7t6T4QKUPXKOeY_epW4gycYbR5zLsuaf5KWLbm9xs0jNJD207ph9M5bBhG0xCxOzqk_8yRwo7a5zwRixCLM_G7uv0Q2oVrLM7pnbKnmRlVujbKw/s1933/Picsart_24-06-22_00-00-25-047.png" alt="Ultimate Game Vault Logo">
          Leaderboard
+        <a href="https://www.facebook.com/profile.php?id=61550547265494&mibextid=ZbWKwL" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/240px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook Logo" class="facebook-logo">
+        </a>
     </h1>
     <table>
         <thead>
@@ -74,6 +94,10 @@
             <!-- Leaderboard data will be inserted here by JavaScript -->
         </tbody>
     </table>
+
+    <div class="footer">
+        <p style="color: #f00;">Best Platform - Where Everyone Wants to Play</p>
+    </div>
 
     <script>
         const sheetURL = 'https://script.google.com/macros/s/AKfycbzohzi0iXgR2XsYIBWNUbcGWu5PqVUV0os9vodjy0b7pmJUicpeISF3GFIk1XRqsjUs/exec';
