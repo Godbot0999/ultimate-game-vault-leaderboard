@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Game Vault Leaderboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://thedailyguardian.com/wp-content/uploads/2024/01/casino.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: rgba(192, 57, 43, 0.8);
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 img {
+            width: 100px; /* Adjust the size as needed */
+            height: auto;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: rgba(231, 76, 60, 0.9);
+            color: white;
+            font-size: 1.2em;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(62, 62, 62, 0.9);
+        }
+        tr:nth-child(odd) {
+            background-color: rgba(42, 42, 42, 0.9);
+        }
+        tr:hover {
+            background-color: rgba(68, 68, 68, 0.9);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXH6laMbs-t57q8u8N6VBmfTLCCdKme8MZogaMcTEFl0mHJ3AfOne7dstvnOkDUHObKMEMhL28VlOi7t6T4QKUPXKOeY_epW4gycYbR5zLsuaf5KWLbm9xs0jNJD207ph9M5bBhG0xCxOzqk_8yRwo7a5zwRixCLM_G7uv0Q2oVrLM7pnbKnmRlVujbKw/s1933/Picsart_24-06-22_00-00-25-047.png" alt="Ultimate Game Vault Logo">
+        Ultimate Game Vault Leaderboard
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard">
+            <!-- Leaderboard data will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        const sheetURL = 'https://script.google.com/macros/s/AKfycbzohzi0iXgR2XsYIBWNUbcGWu5PqVUV0os9vodjy0b7pmJUicpeISF3GFIk1XRqsjUs/exec';
+
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch(sheetURL);
+                const data = await response.json();
+                
+                const leaderboard = data.map((entry, index) => ({
+                    rank: index + 1,
+                    name: entry['Player Name'],
+                    score: entry['Score']
+                }));
+
+                displayLeaderboard(leaderboard);
+            } catch (error) {
+                console.error('Error fetching leaderboard data:', error);
+            }
+        }
+
+        function displayLeaderboard(leaderboard) {
+            const tbody = document.getElementById('leaderboard');
+            tbody.innerHTML = '';
+
+            leaderboard.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${player.rank}</td>
+                    <td>${player.name}</td>
+                    <td>${player.score}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        fetchLeaderboard();
+    </script>
+
+</body>
+</html>
